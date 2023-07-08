@@ -6,8 +6,14 @@
   @vite('resources/css/app.css')
 </head>
 <body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+    <main class="max-w-4xl mx-auto mt-8">
+        <div class=" grid grid-cols-4 gap-4">
+            @foreach($boxes as $box)
+                <div class="border p-4 border-gray-800" style="{{ $box['style'] }}">
+                    {{ $box['boxNumber'] }}. {{ $box['text'] }}
+                </div>
+            @endforeach
+        </div>
+    </main>
 </body>
 </html>
