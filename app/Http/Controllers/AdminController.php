@@ -26,7 +26,24 @@ class AdminController extends Controller
         Storage::disk('s3')->put('boxes.json', json_encode($boxes));
     }
 
-    public function createText(Request $request)
+    private function getTextFromList($selectedText)
+    {
+        $textList = [
+            'Dropee.com',
+            'B2B Marketplace',
+            'SaaS enabled marketplace',
+            'Provide Transparency',
+            'Build Trust',
+        ];
+
+        if (isset($textList[$selectedText])) {
+            return $textList[$selectedText];
+        }
+
+        return '';
+    }
+
+    public function locateText(Request $request)
     {
         $text = $request->input('text');
         $placement = $request->input('placement');

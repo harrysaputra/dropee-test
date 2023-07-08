@@ -18,7 +18,7 @@ use App\Http\Controllers\AdminController;
 Route::get('/admin', [AdminController::class, 'index']);
 
 // Route to submit the admin panel form
-Route::post('/admin', [AdminController::class, 'createText']);
+Route::post('/admin', [AdminController::class, 'locateText']);
 
 // Route to show the index page
 Route::get('/', function () {
