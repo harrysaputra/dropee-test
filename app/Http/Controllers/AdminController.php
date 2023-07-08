@@ -14,16 +14,16 @@ class AdminController extends Controller
 
     private function getBoxes()
     {
-        $boxes = Storage::exists('boxes.json')
-            ? json_decode(Storage::get('boxes.json'), true)
-            : [];
+        $boxes = Storage::disk('s3')->exists('boxes.json')
+        ? json_decode(Storage::disk('s3')->get('boxes.json'), true)
+        : [];
 
         return $boxes;
     }
 
     private function saveBoxes($boxes)
     {
-        Storage::put('boxes.json', json_encode($boxes));
+        Storage::disk('s3')->put('boxes.json', json_encode($boxes));
     }
 
     public function createText(Request $request)

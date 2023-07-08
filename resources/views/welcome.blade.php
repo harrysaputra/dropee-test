@@ -9,7 +9,7 @@
     <main class="max-w-4xl mx-auto mt-8">
         <div class=" grid grid-cols-4 gap-4">
             @foreach($boxes as $box)
-                <div class="border p-4 border-gray-800" style="{{ $box['style'] }}">
+                <div id="{{ $box['boxNumber'] }}" class="border p-4 border-gray-800" style="{{ $box['style'] }}">
                     {{ $box['boxNumber'] }}. {{ $box['text'] }}
                 </div>
             @endforeach

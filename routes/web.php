@@ -22,9 +22,6 @@ Route::post('/admin', [AdminController::class, 'createText']);
 
 // Route to show the index page
 Route::get('/', function () {
-    $boxes = Storage::exists('boxes.json')
-        ? json_decode(Storage::get('boxes.json'), true)
-        : [];
-
+    $boxes = json_decode(Storage::disk('s3')->get('boxes.json'), true);
     return view('welcome', compact('boxes'));
 });
