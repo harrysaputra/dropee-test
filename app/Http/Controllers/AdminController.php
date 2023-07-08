@@ -14,14 +14,16 @@ class AdminController extends Controller
 
     private function getBoxes()
     {
-        $json = Storage::disk('gcs')->get('boxes.json');
-        return json_decode($json, true) ?: [];
+        $boxes = Storage::exists('boxes.json')
+            ? json_decode(Storage::get('boxes.json'), true)
+            : [];
+
+        return $boxes;
     }
 
     private function saveBoxes($boxes)
     {
-        $json = json_encode($boxes);
-        Storage::disk('gcs')->put('boxes.json', $json);
+        Storage::put('boxes.json', json_encode($boxes));
     }
 
     public function createText(Request $request)
