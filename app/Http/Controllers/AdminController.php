@@ -25,4 +25,47 @@ class AdminController extends Controller
     {
         Storage::put('boxes.json', json_encode($boxes));
     }
+
+    public function createText(Request $request)
+    {
+        $text = $request->input('text');
+        $placement = $request->input('placement');
+        $style = $this->getStyle($request);
+
+        $boxes = $this->getBoxes();
+
+        $boxes[$placement]['text'] = $text;
+        $boxes[$placement]['style'] = $style;
+
+        // Add the color picker input handling
+        $textColor = $request->input('text-color');
+        if ($textColor) {
+            $boxes[$placement]['style'] .= 'color: ' . $textColor . ';';
+        }
+
+        $this->saveBoxes($boxes);
+
+        return redirect('/');
+    }
+
+    private function getStyle(Request $request)
+    {
+        $style = '';
+
+        if ($request->input('italic')) {
+            $style .= 'font-style: italic;';
+        }
+
+        if ($request->input('bold')) {
+            $style .= 'font-weight: bold;';
+        }
+
+        $fontSize = $request->input('font-size');
+        if ($fontSize) {
+            $style .= 'font-size: ' . $fontSize . 'px;';
+        }
+
+        return $style;
+    }
+
 }
