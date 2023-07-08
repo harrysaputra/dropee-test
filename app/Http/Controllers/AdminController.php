@@ -47,32 +47,6 @@ class AdminController extends Controller
         Storage::disk('s3')->put('boxes.json', json_encode($boxes));
     }
 
-    public function locateText(Request $request)
-    {
-        $selectedText = $request->input('selected_text');
-        $placement = $request->input('placement');
-        $style = $this->getStyle($request);
-
-        $boxes = $this->getBoxes();
-
-        $boxes[$placement]['text'] = $selectedText;
-        $boxes[$placement]['style'] = $style;
-
-        // Ensure the placement is valid
-        if ($placement >= 0 && $placement < count($boxes)) {
-            $text = $this->getTextFromList($selectedText);
-            $boxes[$placement] = [
-                'text' => $selectedText,
-                'style' => $style,
-            ];
-
-        }
-
-        $this->saveBoxes($boxes);
-
-        return redirect('/');
-    }
-
     private function getStyle(Request $request)
     {
         $style = '';
@@ -96,6 +70,44 @@ class AdminController extends Controller
         }
 
         return $style;
+    }
+
+    private function isTextAlreadyPresent($selectedText, $boxes)
+    {
+        foreach ($boxes as $box) {
+            if (isset($box['text']) && $box['text'] === $this->getTextFromList($selectedText)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function locateText(Request $request)
+    {
+        $selectedText = $request->input('selected_text');
+        $placement = $request->input('placement');
+        $style = $this->getStyle($request);
+
+        $boxes = $this->getBoxes();
+
+        $boxes[$placement]['text'] = $selectedText;
+        $boxes[$placement]['style'] = $style;
+
+        // Ensure the placement is valid
+        if ($placement >= 0 && $placement < count($boxes) && !$this->isTextAlreadyPresent($selectedText, $boxes)) {
+            $text = $this->getTextFromList($selectedText);
+            $boxes[$placement] = [
+                'text' => $selectedText,
+                'style' => $style,
+                'boxNumber' => $placement + 1,
+            ];
+
+        }
+
+        $this->saveBoxes($boxes);
+
+        return redirect('/');
     }
 
 }
