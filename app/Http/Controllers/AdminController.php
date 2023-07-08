@@ -9,7 +9,28 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin');
+        $textList = $this->getTextList();
+        return view('admin', compact('textList'));
+    }
+
+    private function getTextList()
+    {
+        return [
+            'Dropee.com',
+            'B2B Marketplace',
+            'SaaS enabled marketplace',
+            'Provide Transparency',
+            'Build Trust',
+        ];
+    }
+
+    private function getTextFromList($selectedText)
+    {
+    $textList = $this->getTextList();
+        if (isset($textList[$selectedText])) {
+            return $textList[$selectedText];
+        }
+        return '';
     }
 
     private function getBoxes()
@@ -26,38 +47,25 @@ class AdminController extends Controller
         Storage::disk('s3')->put('boxes.json', json_encode($boxes));
     }
 
-    private function getTextFromList($selectedText)
-    {
-        $textList = [
-            'Dropee.com',
-            'B2B Marketplace',
-            'SaaS enabled marketplace',
-            'Provide Transparency',
-            'Build Trust',
-        ];
-
-        if (isset($textList[$selectedText])) {
-            return $textList[$selectedText];
-        }
-
-        return '';
-    }
-
     public function locateText(Request $request)
     {
-        $text = $request->input('text');
+        $selectedText = $request->input('selected_text');
         $placement = $request->input('placement');
         $style = $this->getStyle($request);
 
         $boxes = $this->getBoxes();
 
-        $boxes[$placement]['text'] = $text;
+        $boxes[$placement]['text'] = $selectedText;
         $boxes[$placement]['style'] = $style;
 
-        // Add the color picker input handling
-        $textColor = $request->input('text-color');
-        if ($textColor) {
-            $boxes[$placement]['style'] .= 'color: ' . $textColor . ';';
+        // Ensure the placement is valid
+        if ($placement >= 0 && $placement < count($boxes)) {
+            $text = $this->getTextFromList($selectedText);
+            $boxes[$placement] = [
+                'text' => $selectedText,
+                'style' => $style,
+            ];
+
         }
 
         $this->saveBoxes($boxes);
@@ -80,6 +88,11 @@ class AdminController extends Controller
         $fontSize = $request->input('font-size');
         if ($fontSize) {
             $style .= 'font-size: ' . $fontSize . 'px;';
+        }
+
+        $textColor = $request->input('text-color');
+        if ($textColor) {
+            $style .= 'color: ' . $textColor;
         }
 
         return $style;

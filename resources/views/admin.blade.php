@@ -7,13 +7,17 @@
     <form method="POST" action="/admin">
         @csrf
         <label for="text">Text:</label>
-        <input type="text" id="text" name="text" required><br><br>
+        <select name="selected_text" id="selected_text">
+            @foreach ($textList as $index => $text)
+                <option value="{{ $text }}">{{ $text }}</option>
+            @endforeach
+        </select>
 
         <label for="placement">Placement:</label>
         <select id="placement" name="placement">
-            <option value="0">Box 1</option>
-            <option value="1">Box 2</option>
-            <option value="2">Box 3</option>
+            @for ($i = 0; $i < 16; $i++)
+                <option value="{{ $i }}">Box {{ $i + 1 }}</option>
+            @endfor
         </select><br><br>
 
         <label for="italic">Italic:</label>
