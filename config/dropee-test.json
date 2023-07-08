@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "dropee-test",
+  "private_key_id": "e27cd5289458436fa9bd16158a64ba967b4db34f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDLpg/dgvXOsd6S\nV3rksJLwePRfcpDklT0OI+nks1BCK/9WTy7zV1rvzKyrY/36XZyj5W1D0XpMtUrw\na0q8kQM6wskK1HDF58uFWdjgMY3NEiYF2DKLHRbPayoSNjn2V0zTxsg5P5ulFfeU\nme0mnx2V9VBhL55RUrFCECA4EUpVE1ZLoaxwtZjsRRfZwhEQjOpTGo9iyq4lcg2T\n22eGDzIP3NwIYCk6vYmJtjSpAaB2yYpEME+64G9P7PP/l2vlVeez6MhFhrcna6lk\nWhWovXQn7EtG+mup3y5mETxJk5bLapSw5V16m/GQmHoMweoe2/ldGOv9kKsyxiPp\n3tZ1GsTlAgMBAAECgf8OKOQktfZhaMl3Y2qOfB7umXpkW8YduEK5uPi9h7pAEs8U\nl6ASfpoHRZpVg55YY8OAbqaQqjM9IiqtWZU/INYYpj9UTj3vhMgISmowX6gWAJNx\nB8p74b0arvJxHodPmY8kXa30s3eFaWgAueZc/EzfIGKpknLWAYOE4TPCsj3fRfLC\nRhbsgw4JxAe3UEbLl/uDw5NX0Xeo49pXnfrsEmDYUX1HzdVjbmLQ+VQNsXCnDKma\neY3/tZXlpAbqLeXtAQlMdmnzmgPGxV53FEYDq5fj9m2iJl0d7TxIrPK6S5QFHl5y\nnc9Ijm64nPsMNgG1dioTlXZyJP65eBGhFildOh0CgYEA67lgpKICJu6dIiCgjyUu\nzcCyC8gEDATWIt6QR9rJGYsckqwkrBPM5eP2y44ex+gfJj+dWBJpp/GakTGgL+n1\nMybWAMJ1B/pwzTG0r58eRQ2VuH3WrZ2JQClYWil/N12Bq6GzWMK7tt5gXW5WTSN+\nDK1zAX7ZYlgl/4ZtWCSTsyMCgYEA3Spi2dGOW7KS18hSgzrln1PlxxltUHeDSSo4\nGsoqw2xZrg052U5HTKwTn1y8G37/BzZfy3PEqoNWWtDAZZ3c73pkk4iZXBNMLxgQ\ntTtUSY4HM+v4ozNN/HeHhghxxVKhKNMASzEsOZTMOIHG4ErssSwUGBcP3W9HEbeA\nAeZDzFcCgYEAuVJwzH4iOwF1wBLuqBuPhGtujxydMeXLhHZ98D/twos/14BHBJI8\nkLB8ouQFBx1S//sbdNZlAohMAMKHMaQ6BhEORmKbJ76ZWHkvmLL8VUWs4/LrCGvG\nMA9RSvE89wYooArsuWe/tLF4CXxplRPGUak7tX1I4qxyk0XYSWfYRwkCgYB36XxR\nFxJ1WzvMrPs31Z4cJbPmoD2prDLNX4ut0sEe1cdF3DvqO0vjIUU+WVxQGCoT8gI8\nYBdYT/9pG9fFALOCUDzp1N05k+jxe73LVVCc1NnI5/8WFUIKSZB8NmXhE6z3Yne9\nTPrqeWfEl3CJuXXdlcWLTi225JeG3pQT85H83wKBgQCRBc/iYtgHnTy6MFCeG9V9\nwXosGKEnasbqaIzRXdlfW8s5DMCor8xR5oOhaY80LjzIjFRXO+EKtII3f/aV5MbG\nnGfQaXDs0tLQtCbLu3IRyJEwGZxFR3GA3TKsuaYifHDt4mAf34jSyVa6jBpXomTL\nEkO3R2YcqCsqXwR9CCHAdw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dropee-test@dropee-test.iam.gserviceaccount.com",
+  "client_id": "101449887594516890596",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dropee-test%40dropee-test.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
