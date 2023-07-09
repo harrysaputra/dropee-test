@@ -7,16 +7,16 @@
 </head>
 <body>
     <main class="max-w-4xl mx-auto">
-        <h1 class="font-bold text-2xl mt-8">Placement Text</h1>
+        <h1 class="font-bold text-2xl mt-8">Text Control Panel</h1>
         <table class="table table-auto mt-4 border border-collapse border-slate-500">
             <thead>
                 <tr>
-                <th class="border border-slate-500 p-2">text</th>
-                <th class="border border-slate-500 p-2">location</th>
-                <th class="border border-slate-500 p-2">style</th>
-                <th class="border border-slate-500 p-2">size</th>
-                <th class="border border-slate-500 p-2">color</th>
-                <th class="border border-slate-500 p-2">action</th>
+                <th class="border border-slate-500 px-3 py-2">text</th>
+                <th class="border border-slate-500 px-3 py-2">location</th>
+                <th class="border border-slate-500 px-3 py-2">style</th>
+                <th class="border border-slate-500 px-3 py-2">size(px)</th>
+                <th class="border border-slate-500 px-3 py-2">color</th>
+                <th class="border border-slate-500 px-3 py-2">action</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,11 +28,11 @@
                     <form action="/admin" method="POST">
                         @csrf
                         <tr>
-                            <td class="border border-slate-500 p-2">
+                            <td class="border border-slate-500 px-3 py-2">
                                 <input type="hidden" name="selected_text" value="{{ $text }}">
                                 {{ $text }}
                             </td>
-                            <td class="border border-slate-500 p-2">
+                            <td class="border border-slate-500 px-3 py-2">
                                 <select name="placement" id="placement_{{ $index }}" class="border border-slate-500 p-2">
                                 @for ($i = 1; $i <= 16; $i++)
                                     <option value="{{ $i-1 }}" @if ($currentPosition === $i) selected @endif>
@@ -44,7 +44,7 @@
                                 @endfor
                                 </select>
                             </td>
-                            <td class="border border-slate-500 p-2">
+                            <td class="border border-slate-500 px-3 py-2">
                                 <div class="flex gap-2">
                                     <input type="checkbox" name="bold" id="bold_{{ $index }}">
                                     Bold
@@ -52,18 +52,20 @@
                                     Italic
                                 </div>
                             </td>
-                            <td class="border border-slate-500 p-2">
+                            <td class="border border-slate-500 px-3 py-2">
                                 <input type="number" name="font-size" class="border border-slate-500 w-20" id="font_size_{{ $index }}">
                             </td>
-                            <td class="border border-slate-500 p-2">
+                            <td class="border border-slate-500 px-3 py-2">
                                 <input type="color" name="text-color" id="color_{{ $index }}">
                             </td>
-                            <td class="border border-slate-500 p-2"><button type="submit" class="bg-slate-100 border border-slate-400 p-2 rounded">Save</button></td>
+                            <td class="border border-slate-500 px-3 py-2"><button type="submit" class="bg-slate-100 border border-slate-400 p-2 rounded">Save</button></td>
                         </tr>
                     </form>
                 @endforeach
             </tbody>
         </table>
+        <a href="{{ route('index') }}" class="mt-12 px-3 py-2 rounded bg-orange-500 text-white inline-block font-bold hover:bg-orange-400">Back to Box Map</a>
+
     </main>
 </body>
 </html>

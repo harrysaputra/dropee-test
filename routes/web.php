@@ -15,8 +15,7 @@ use App\Http\Controllers\AdminController;
 */
 
 // Route to show the admin panel form
-Route::get('/admin', [AdminController::class, 'index']);
-
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 // Route to submit the admin panel form
 Route::post('/admin', [AdminController::class, 'locateText']);
 
@@ -24,4 +23,4 @@ Route::post('/admin', [AdminController::class, 'locateText']);
 Route::get('/', function () {
     $boxes = json_decode(Storage::disk('s3')->get('boxes.json'), true);
     return view('welcome', compact('boxes'));
-});
+})->name('index');
