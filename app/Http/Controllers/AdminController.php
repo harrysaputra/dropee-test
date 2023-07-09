@@ -83,6 +83,7 @@ public function locateText(Request $request)
 
     // Check if the selected text already exists in any box
     $existingPlacement = null;
+
     foreach ($boxes as $index => $box) {
         if (isset($box['text']) && $box['text'] === $selectedText) {
             $existingPlacement = $index;
@@ -97,13 +98,17 @@ public function locateText(Request $request)
     // Ensure the placement is valid and the text is not already present in the selected box
     if ($placement >= 0 && $placement < 16 && $existingPlacement !== $placement) {
         // Remove the text from its existing placement if found
+
+        $text = $selectedText;
+
         if ($existingPlacement !== null) {
+            $text = $boxes[$existingPlacement]['text'];
             $boxes[$existingPlacement]['text'] = null;
             $boxes[$existingPlacement]['style'] = '';
         }
 
         // Place the selected text on the new placement
-        $boxes[$placement]['text'] = $selectedText;
+        $boxes[$placement]['text'] = $text;
         $boxes[$placement]['style'] = $style;
         $boxes[$placement]['boxNumber'] = $placement + 1;
     }
