@@ -1,22 +1,18 @@
 [
-    { "text": "1232123", "style": "color: #000000;" },
-    {
-        "text": "I love you",
-        "style": "font-weight: bold;font-size: 16px;color: #0065d1;",
-
-    },
+    { "text": "", "style": "", "boxNumber": 1 },
+    { "text": "Dropee.com", "style": "", "boxNumber": 2 },
     { "text": "", "style": "", "boxNumber": 3 },
-    { "text": "", "style": "", "boxNumber": 4 },
+    { "text": "Build Trust", "style": "", "boxNumber": 4 },
     { "text": "", "style": "", "boxNumber": 5 },
     { "text": "", "style": "", "boxNumber": 6 },
-    { "text": "", "style": "", "boxNumber": 7 },
+    { "text": "SaaS enabled marketplace", "style": "", "boxNumber": 7 },
     { "text": "", "style": "", "boxNumber": 8 },
-    { "text": "", "style": "", "boxNumber": 9 },
+    { "text": "B2B Marketplace", "style": "", "boxNumber": 9 },
     { "text": "", "style": "", "boxNumber": 10 },
     { "text": "", "style": "", "boxNumber": 11 },
     { "text": "", "style": "", "boxNumber": 12 },
     { "text": "", "style": "", "boxNumber": 13 },
     { "text": "", "style": "", "boxNumber": 14 },
     { "text": "", "style": "", "boxNumber": 15 },
-    { "text": "", "style": "", "boxNumber": 16 }
+    { "text": "Provide Transparency", "style": "", "boxNumber": 16 }
 ]

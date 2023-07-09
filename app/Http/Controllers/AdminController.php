@@ -10,7 +10,8 @@ class AdminController extends Controller
     public function index()
     {
         $textList = $this->getTextList();
-        return view('admin', compact('textList'));
+        $boxes = $this->getBoxes();
+        return view('admin', compact('textList', 'boxes'));
     }
 
     private function getTextList()
@@ -72,42 +73,44 @@ class AdminController extends Controller
         return $style;
     }
 
-    private function isTextAlreadyPresent($selectedText, $boxes)
-    {
-        foreach ($boxes as $box) {
-            if (isset($box['text']) && $box['text'] === $this->getTextFromList($selectedText)) {
-                return true;
-            }
-        }
+public function locateText(Request $request)
+{
+    $selectedText = $request->input('selected_text');
+    $placement = $request->input('placement');
+    $style = $this->getStyle($request);
 
-        return false;
+    $boxes = $this->getBoxes();
+
+    // Check if the selected text already exists in any box
+    $existingPlacement = null;
+    foreach ($boxes as $index => $box) {
+        if (isset($box['text']) && $box['text'] === $selectedText) {
+            $existingPlacement = $index;
+            break;
+        }
     }
 
-    public function locateText(Request $request)
-    {
-        $selectedText = $request->input('selected_text');
-        $placement = $request->input('placement');
-        $style = $this->getStyle($request);
+    // Find the index of the selected text in the text list
+    $textList = $this->getTextList();
+    $selectedTextIndex = array_search($selectedText, $textList);
 
-        $boxes = $this->getBoxes();
+    // Ensure the placement is valid and the text is not already present in the selected box
+    if ($placement >= 0 && $placement < 16 && $existingPlacement !== $placement) {
+        // Remove the text from its existing placement if found
+        if ($existingPlacement !== null) {
+            $boxes[$existingPlacement]['text'] = null;
+            $boxes[$existingPlacement]['style'] = '';
+        }
 
+        // Place the selected text on the new placement
         $boxes[$placement]['text'] = $selectedText;
         $boxes[$placement]['style'] = $style;
-
-        // Ensure the placement is valid
-        if ($placement >= 0 && $placement < count($boxes) && !$this->isTextAlreadyPresent($selectedText, $boxes)) {
-            $text = $this->getTextFromList($selectedText);
-            $boxes[$placement] = [
-                'text' => $selectedText,
-                'style' => $style,
-                'boxNumber' => $placement + 1,
-            ];
-
-        }
-
-        $this->saveBoxes($boxes);
-
-        return redirect('/');
+        $boxes[$placement]['boxNumber'] = $placement + 1;
     }
+
+    $this->saveBoxes($boxes);
+
+    return redirect('/');
+}
 
 }
