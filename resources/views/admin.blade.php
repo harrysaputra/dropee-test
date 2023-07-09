@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
+  <link rel="stylesheet" href="https://vapor-us-east-1-assets-1688829362.s3.amazonaws.com/app-3d4b19da.css" />
 </head>
 <body>
     <main class="max-w-4xl mx-auto">
